@@ -45,12 +45,12 @@ def test_create_user(client):
     }
 
 
-def test_read_user(client):
+def test_read_user(client, user):
     response = client.get('/users/1')
     assert response.status_code == HTTPStatus.OK
     assert response.json() == {
-        'username': 'alice',
-        'email': 'alice@example.com',
+        'username': 'Teste',
+        'email': 'teste@test.com',
         'id': 1,
     }
 
