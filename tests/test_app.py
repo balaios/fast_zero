@@ -156,7 +156,7 @@ def test_delete_user_wrong_user(client, token):
 
 def test_get_token(client, user):
     response = client.post(
-        '/token',
+        '/auth/token',
         data={'username': user.email, 'password': user.clean_password},
     )
     token = response.json()
@@ -168,7 +168,7 @@ def test_get_token(client, user):
 
 def test_login_for_acess_token_incorrect_email(client):
     response = client.post(
-        '/token',
+        '/auth/token',
         data={'username': 'test@test.com', 'password': 'test'},
     )
 
@@ -178,7 +178,7 @@ def test_login_for_acess_token_incorrect_email(client):
 
 def test_login_for_acess_token_incorrect_password(client, user):
     response = client.post(
-        '/token',
+        '/auth/token',
         data={'username': user.email, 'password': 'test'},
     )
 
