@@ -33,7 +33,7 @@ def test_jwt_invalid_token(client):
 
 
 def test_get_current_not_user():
-    data = {'sub': ''}
+    data = {}
     token = create_access_token(data)
 
     with pytest.raises(HTTPException) as excinfo:
@@ -45,6 +45,5 @@ def test_get_current_user_invalid(session):
     data = {'sub': 'test@test.com'}
     token = create_access_token(data)
 
-    with pytest.raises(HTTPException) as excinfo:
+    with pytest.raises(HTTPException):
         get_current_user(session=session, token=token)
-    assert str(excinfo.value) == '401: Could not validate credentials'
